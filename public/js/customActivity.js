@@ -87,11 +87,21 @@ define([
     }
 
     function save() {
-        var postcardURLValue = $('#postcard-url').val();
-        var postcardTextValue = $('#postcard-text').val();
+        var messageName = $('#messageName').val();
+        var templateId = $('#templateId').val();
+        var parameter1 = $('#parameter1').val();
+        var parameter2 = $('#parameter2').val();
+        var parameter3 = $('#parameter3').val();
+        var parameter10 = $('#parameter10').val();
 
         payload['arguments'].execute.inArguments = [{
-            "tokens": authTokens
+            "tokens": authTokens,
+            "messageName": messageName,
+            "templateId": templateId,
+            "parameter1": parameter1,
+            "parameter2": parameter2,
+            "parameter3": parameter3,
+            "parameter10": parameter10
         }];
         
         payload['metaData'].isConfigured = true;
@@ -99,6 +109,4 @@ define([
         console.log(payload);
         connection.trigger('updateActivity', payload);
     }
-
-
 });
